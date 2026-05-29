@@ -24,7 +24,7 @@
             position:relative;
         }
 
-        /* Animated Background */
+        
 
         .background{
             position:fixed;
@@ -80,7 +80,7 @@
             }
         }
 
-        /* Navbar */
+        
 
         nav{
             display:flex;
@@ -114,7 +114,7 @@
             color:#c084fc;
         }
 
-        /* Hero Section */
+       
 
         .hero{
             min-height:90vh;
@@ -151,7 +151,7 @@
             line-height:1.7;
         }
 
-        /* Input Box */
+        
 
         .dream-box{
             background:rgba(255,255,255,0.08);
@@ -197,7 +197,7 @@
             box-shadow:0 0 20px #c084fc;
         }
 
-        /* Dream Output */
+        
 
         .output{
             margin-top:40px;
@@ -228,7 +228,7 @@
             box-shadow:0 0 20px rgba(255,255,255,0.05);
         }
 
-        /* Mood Section */
+        
 
         .moods{
             margin-top:60px;
@@ -252,7 +252,7 @@
             transform:translateY(-5px);
         }
 
-        /* Footer */
+        
 
         footer{
             text-align:center;
@@ -260,7 +260,7 @@
             color:#d1d5db;
         }
 
-        /* Responsive */
+        
 
         @media(max-width:768px){
 
@@ -288,7 +288,7 @@
 
 <body>
 
-    <!-- Background -->
+   
 
     <div class="background">
         <div class="circle"></div>
@@ -296,7 +296,7 @@
         <div class="circle"></div>
     </div>
 
-    <!-- Navbar -->
+    
 
     <nav>
         <div class="logo">
@@ -311,7 +311,7 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    
 
     <section class="hero">
 
@@ -343,7 +343,7 @@
 
             </div>
 
-            <!-- Mood Buttons -->
+           
 
             <div class="moods">
 
@@ -369,135 +369,182 @@
 
     </section>
 
-    <!-- Footer -->
 
     <footer>
         AI Dream Generator © 2026 | Designed with imagination ✨
     </footer>
 
-    <!-- JavaScript -->
+    
 
     <script>
 
-        function generateDream(){
+    function generateDream(){
 
-            let input = document.getElementById("dreamInput").value;
+        let input = document.getElementById("dreamInput").value.toLowerCase();
 
-            let output = document.getElementById("output");
+        let output = document.getElementById("output");
 
-            let dreamText = document.getElementById("dreamText");
+        let dreamText = document.getElementById("dreamText");
 
-            if(input.trim() === ""){
+        let body = document.body;
 
-                dreamText.innerHTML = "Please enter a dream idea first ✨";
+        let circles = document.querySelectorAll(".circle");
 
-            }
+        if(input.trim() === ""){
 
-            else{
-
-                dreamText.innerHTML = `
-                    <h2>Your Dream Vision 🌌</h2>
-                    <br>
-
-                    In a distant surreal universe, <b>${input}</b> appeared beneath glowing cosmic skies. 
-                    Floating lights drifted through the air while mysterious whispers echoed across infinite dream landscapes.
-
-                    A soft neon moon illuminated hidden pathways leading toward magical dimensions filled with wonder, emotion, and impossible beauty.
-
-                    Your imagination transformed into a living dream realm where reality no longer existed.
-                `;
-
-            }
+            dreamText.innerHTML = "Please enter a dream idea first ✨";
 
             output.style.display = "block";
 
+            return;
         }
 
-        function changeMood(mood){
+        // Loading Animation
 
-            if(mood === "fantasy"){
+        output.style.display = "block";
 
-                document.body.style.background =
-                "linear-gradient(135deg,#1e1b4b,#312e81,#7c3aed)";
+        dreamText.innerHTML = `
+            <h2>Generating Dream... 🌌</h2>
+        `;
+
+        setTimeout(() => {
+
+            let story = "";
+
+            // SPACE THEME
+
+            if(
+                input.includes("space") ||
+                input.includes("galaxy") ||
+                input.includes("moon") ||
+                input.includes("stars")
+            ){
+
+                body.style.background =
+                "linear-gradient(135deg,#020024,#090979,#000000)";
+
+                circles[0].style.background = "#60a5fa";
+                circles[1].style.background = "#8b5cf6";
+                circles[2].style.background = "#c084fc";
+
+                story = `
+                    <h2>Cosmic Dream 🚀</h2>
+                    <br>
+
+                    You drifted through glowing galaxies where neon stars whispered ancient secrets.
+                    Massive celestial gates opened before you while purple moons floated silently above cosmic oceans.
+
+                    In the distance, forgotten civilizations shimmered beneath endless constellations.
+                `;
             }
 
-            if(mood === "ocean"){
+            // OCEAN THEME
 
-                document.body.style.background =
-                "linear-gradient(135deg,#021b33,#064e3b,#0891b2)";
+            else if(
+                input.includes("ocean") ||
+                input.includes("water") ||
+                input.includes("sea") ||
+                input.includes("fish")
+            ){
+
+                body.style.background =
+                "linear-gradient(135deg,#021B33,#064E3B,#0891B2)";
+
+                circles[0].style.background = "#06b6d4";
+                circles[1].style.background = "#0ea5e9";
+                circles[2].style.background = "#14b8a6";
+
+                story = `
+                    <h2>Ocean Dream 🌊</h2>
+                    <br>
+
+                    Beneath glowing underwater skies, crystal jellyfish floated around ancient ruins hidden deep inside neon oceans.
+
+                    Blue waves moved like liquid light while mysterious sea creatures guarded forgotten treasures.
+                `;
             }
 
-            if(mood === "space"){
+            // FOREST THEME
 
-                document.body.style.background =
-                "linear-gradient(135deg,#000000,#111827,#312e81)";
+            else if(
+                input.includes("forest") ||
+                input.includes("tree") ||
+                input.includes("nature") ||
+                input.includes("jungle")
+            ){
+
+                body.style.background =
+                "linear-gradient(135deg,#052e16,#166534,#14532d)";
+
+                circles[0].style.background = "#22c55e";
+                circles[1].style.background = "#4ade80";
+                circles[2].style.background = "#86efac";
+
+                story = `
+                    <h2>Forest Dream 🌿</h2>
+                    <br>
+
+                    You wandered through magical forests where glowing butterflies danced beneath floating trees.
+
+                    Ancient spirits whispered through emerald winds while golden rivers flowed through enchanted lands.
+                `;
             }
 
-            if(mood === "cyber"){
+            // CYBERPUNK THEME
 
-                document.body.style.background =
+            else if(
+                input.includes("robot") ||
+                input.includes("ai") ||
+                input.includes("cyber") ||
+                input.includes("future")
+            ){
+
+                body.style.background =
                 "linear-gradient(135deg,#0f172a,#6d28d9,#ec4899)";
+
+                circles[0].style.background = "#ec4899";
+                circles[1].style.background = "#8b5cf6";
+                circles[2].style.background = "#3b82f6";
+
+                story = `
+                    <h2>Cyber Dream ⚡</h2>
+                    <br>
+
+                    Neon skyscrapers pierced the dark futuristic sky while holograms flickered across endless digital streets.
+
+                    AI entities moved silently through glowing cybernetic dimensions beyond human imagination.
+                `;
             }
 
-        }
+            // DEFAULT THEME
 
-    </script>
+            else{
 
-</body>
-</html>
-=======
-<!DOCTYPE html>
-<html>
-<head>
-    <title>My First Website</title>
+                body.style.background =
+                "linear-gradient(135deg,#1e1b4b,#312e81,#7c3aed)";
 
-    <style>
-        body{
-            background-color: #f5f5f5;
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin-top: 100px;
-        }
+                circles[0].style.background = "#8b5cf6";
+                circles[1].style.background = "#ec4899";
+                circles[2].style.background = "#60a5fa";
 
-        h1{
-            color: darkblue;
-        }
+                story = `
+                    <h2>Dream Vision ✨</h2>
+                    <br>
 
-        p{
-            font-size: 20px;
-        }
+                    In a surreal universe, <b>${input}</b> appeared beneath glowing skies filled with mystery and emotion.
 
-        button{
-            padding: 10px 20px;
-            border: none;
-            background-color: blue;
-            color: white;
-            border-radius: 5px;
-            cursor: pointer;
-        }
+                    Floating lights drifted through magical dimensions while reality slowly dissolved into pure imagination.
+                `;
+            }
 
-        button:hover{
-            background-color: darkblue;
-        }
-    </style>
-</head>
+            dreamText.innerHTML = story;
 
-<body>
+        }, 1500);
 
-    <h1>Heyyyy Kyootieeee</h1>
+    }
 
-    <p>My website is connected to GitHub and Vercel.</p>
-
-    <button onclick="showMessage()">
-        Click Me
-    </button>
-
-    <script>
-        function showMessage(){
-            alert("Welcome to my website!");
-        }
-    </script>
+</script>
 
 </body>
 </html>
->>>>>>> a4dfa2fc0b86463541676a9283b4246593df504e
+
